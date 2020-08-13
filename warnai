@@ -76,12 +76,15 @@ gtk_themer(){
 }
 
 apply_theme(){
+  if command -v xfconf-query &> /dev/null
+  then
 	echo "Applying theme ..."
 	xfconf-query -c xfwm4 -p /general/theme -s "adwaita"
 	xfconf-query -c xfwm4 -p /general/theme -s "warna"
 	xfconf-query -c xsettings -p /Net/ThemeName -s "adwaita"
 	xfconf-query -c xsettings -p /Net/ThemeName -s "warna"
 	notify-send "Done changing theme :)"
+  fi
 }
 
 show_help(){
